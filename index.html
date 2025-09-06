@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simulador de Movimiento Circular</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="wrap">
+    <h1>Simulador de Movimiento Circular Uniforme (MCU)</h1>
+    <p class="lead">Ingresa el <strong>radio</strong> y uno de los parámetros (<strong>T</strong>, <strong>f</strong>, <strong>ω</strong>).
+    El simulador calculará el resto y mostrará la <strong>aceleración centrípeta</strong>.</p>
+
+    <div class="grid">
+      <!-- Panel de controles -->
+      <div class="card">
+        <h2 style="margin:4px 0 10px; font-size:18px">Parámetros de entrada</h2>
+        <div class="row">
+          <div>
+            <label>Radio (r) [m]</label>
+            <input id="r" type="number" step="0.01" min="0.01" value="2" />
+          </div>
+          <div>
+            <label>Periodo (T) [s]</label>
+            <input id="T" type="number" step="0.001" min="0.001" />
+          </div>
+          <div>
+            <label>Frecuencia (f) [Hz]</label>
+            <input id="f" type="number" step="0.001" min="0.001" />
+          </div>
+          <div>
+            <label>Velocidad angular (ω) [rad/s]</label>
+            <input id="w" type="number" step="0.001" min="0.001" />
+          </div>
+        </div>
+
+        <div class="btns">
+          <button id="calc">Calcular</button>
+          <button id="clear" class="secondary">Limpiar</button>
+          <button id="play" class="secondary">▶️ Reproducir</button>
+          <button id="reset" class="secondary">⟲ Reiniciar fase</button>
+        </div>
+
+        <div class="kpiGrid">
+          <div class="kpi"><div class="label">Periodo (T)</div><div class="value" id="kpiT">—</div></div>
+          <div class="kpi"><div class="label">Frecuencia (f)</div><div class="value" id="kpiF">—</div></div>
+          <div class="kpi"><div class="label">Velocidad angular (ω)</div><div class="value" id="kpiW">—</div></div>
+          <div class="kpi"><div class="label">Aceleración centrípeta (aₙ)</div><div class="value" id="kpiAc">—</div></div>
+        </div>
+      </div>
+
+      <!-- Animación -->
+      <div class="card">
+        <div class="canvasWrap">
+          <div class="badge">Animación MCU</div>
+          <canvas id="cnv"></canvas>
+        </div>
+        <div class="row3" style="margin-top:10px">
+          <div>
+            <label>Velocidad animación</label>
+            <input id="speedMul" type="number" step="0.1" min="0.1" value="1" />
+          </div>
+          <div>
+            <label>Rastro</label>
+            <input id="trailCheck" type="checkbox" />
+          </div>
+          <div>
+            <label>Mostrar aₙ</label>
+            <input id="accCheck" type="checkbox" checked />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
